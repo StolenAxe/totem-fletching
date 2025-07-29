@@ -104,7 +104,8 @@ public class TotemFletchingOverlay extends Overlay {
     }
 
     void renderPoints(Graphics2D graphics2D, Totem totem) {
-        if (!config.renderPoints() || (totem.getPoints() == 0 && !config.renderZeroPoints())) return;
+        if (!config.renderPoints() || (totem.getPoints() == 0 && !config.renderZeroPoints()))
+            return;
 
         Client client = this.client;
         GameObject gameObject = totem.getPointsGameObject();
