@@ -6,9 +6,7 @@ import com.github.therealguru.totemfletching.overlay.TotemFletchingOverlay;
 import com.github.therealguru.totemfletching.service.EntTrailService;
 import com.github.therealguru.totemfletching.service.TotemService;
 import com.google.inject.Provides;
-
 import javax.inject.Inject;
-
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
@@ -20,17 +18,12 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 
 @Slf4j
-@PluginDescriptor(
-        name = "Totem Fletching"
-)
+@PluginDescriptor(name = "Totem Fletching")
 public class TotemFletchingPlugin extends Plugin {
 
-    @Inject
-    private Client client;
-    @Inject
-    private TotemFletchingConfig config;
-    @Inject
-    private OverlayManager overlayManager;
+    @Inject private Client client;
+    @Inject private TotemFletchingConfig config;
+    @Inject private OverlayManager overlayManager;
 
     private TotemService totemService;
     private EntTrailService entTrailService;
@@ -42,7 +35,7 @@ public class TotemFletchingPlugin extends Plugin {
     protected void startUp() throws Exception {
         totemService = new TotemService();
         entTrailService = new EntTrailService();
-        gameOverlay = new TotemFletchingOverlay(this, totemService, client);
+        gameOverlay = new TotemFletchingOverlay(this, config, totemService, client);
         carvingOverlay = new CarvingActionOverlay(totemService, config, client);
         entTrailOverlay = new EntTrailOverlay(this, config, entTrailService, client);
         overlayManager.add(gameOverlay);
