@@ -56,12 +56,22 @@ public interface TotemFletchingConfig extends Config {
     }
 
     @ConfigItem(
+            keyName = "renderZeroPoints",
+            name = "Show Zero Points",
+            description = "Draw the overlay over totems even if there are no points to claim",
+            section = sectionOverlays,
+            position = 4)
+    default boolean renderZeroPoints() {
+        return true;
+    }
+
+    @ConfigItem(
             keyName = "renderEntTrails",
             name = "Show Ent Trails",
             description =
                     "Whether to show the ent trails that need to be stepped on for bonus points",
             section = sectionOverlays,
-            position = 4)
+            position = 5)
     default boolean renderEntTrails() {
         return true;
     }
